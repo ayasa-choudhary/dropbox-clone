@@ -4,10 +4,10 @@ import Data from "@/components/Grid";
 
 export default function Home() {
   return (
-   <>
-   <Data/>
-   
-   <Buttons/>
-   </>
+    <div className="h-screen overflow-hidden flex flex-col">
+      <div className="flex-grow">
+        <Data/>
+      </div>
+    </div>
   );
 }

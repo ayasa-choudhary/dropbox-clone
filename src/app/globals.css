@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,6 +28,10 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 .grid-areas{
   display: grid;
@@ -30,6 +39,7 @@ body {
   /* transition: transform 0.2s ease-out; */
   will-change: transform;
   gap: 4px;
+  height: 100%; /* Fill parent container */
   grid-template-areas: 
   "framework framework voice voice voice voice"
     "framework framework voice voice voice voice"
@@ -37,10 +47,10 @@ body {
     "iconography iconography dropbox color color color"
     "imagery imagery imagery motion motion motion"
     "imagery imagery imagery motion motion motion";
-    
-    
+
+
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6,120px);
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .framework { grid-area: framework; }
@@ -53,16 +63,34 @@ body {
 .imagery { grid-area: imagery; }
 .motion { grid-area: motion; }
 
+/* Tablet layout */
+@media (max-width: 1024px) and (min-width: 669px) {
+  .grid-areas {
+    height: 100%; /* Fill parent container */
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "framework framework voice voice"
+      "framework framework voice voice"
+      "iconography iconography logo typography"
+      "color color dropbox typography"
+      "imagery imagery motion motion"
+      "imagery imagery motion motion";
+    grid-template-rows: repeat(6, 1fr);
+  }
+}
+
+/* Mobile layout */
 @media (max-width: 668px) {
   .grid-areas {
+    height: 100%; /* Fill parent container */
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "framework voice "
-      "framework voice "
+      "framework voice"
+      "framework voice"
       "logo typography"
-      "logo typography"
-      "iconography dropbox color"
+      "iconography dropbox"
+      "color color"
       "imagery motion"
-      "imagery motion"
-      
+      "imagery motion";
+    grid-template-rows: repeat(7, 1fr);
   }}

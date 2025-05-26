@@ -33,7 +33,7 @@ interface TileData {
     iconColor: string;
     area: string;
   }
-  
+
   interface TileProps {
     item: TileData;
     hoveredId: number | null;
@@ -43,8 +43,8 @@ interface TileData {
 const tilesData = [
   {
     id: 1,
-    icon: <LuShare2 size={64} className="text-blue-500" />,
-    hoverIcon: <TfiVector size={64} />,
+    icon: <LuShare2 className="text-blue-500 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <TfiVector className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Framework",
     color: "#2c3a58",
     iconColor: "text-blue-500",
@@ -52,8 +52,8 @@ const tilesData = [
   },
   {
     id: 2,
-    icon: <LuMicOff size={64} className="text-yellow-900" />,
-    hoverIcon: <LuMic size={64} />,
+    icon: <LuMicOff className="text-yellow-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <LuMic className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Voice & Tone",
     color: "#F5C531",
     iconColor: "text-yellow-900",
@@ -61,8 +61,8 @@ const tilesData = [
   },
   {
     id: 3,
-    icon: <FaDropbox size={64} className="text-cyan-900" />,
-    hoverIcon: <TfiDropbox size={64} />,
+    icon: <FaDropbox className="text-cyan-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <TfiDropbox className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Logo",
     color: "#00C2E5",
     iconColor: "text-cyan-900",
@@ -70,8 +70,8 @@ const tilesData = [
   },
   {
     id: 4,
-    icon: <LuCaseSensitive size={64} className="text-red-900" />,
-    hoverIcon: <VscCaseSensitive size={64} />,
+    icon: <LuCaseSensitive className="text-red-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <VscCaseSensitive className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Typography",
     color: "#fa551e",
     iconColor: "text-red-900",
@@ -79,8 +79,8 @@ const tilesData = [
   },
   {
     id: 5,
-    icon: <LuTrendingDown size={64} className="text-purple-900" />,
-    hoverIcon: <LuTrendingUp size={64} />,
+    icon: <LuTrendingDown className="text-purple-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <LuTrendingUp className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Motion",
     color: "#C9A2E1",
     iconColor: "text-purple-900",
@@ -88,8 +88,8 @@ const tilesData = [
   },
   {
     id: 6,
-    icon: <FaLock size={64} className="text-green-900" />,
-    hoverIcon: <FaUnlockAlt size={64} />,
+    icon: <FaLock className="text-green-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <FaUnlockAlt className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Iconography",
     color: "#9BD438",
     iconColor: "text-green-900",
@@ -97,8 +97,8 @@ const tilesData = [
   },
   {
     id: 7,
-    icon: <FaPalette size={64} className="text-orange-900" />,
-    hoverIcon: <TfiPalette size={64} />,
+    icon: <FaPalette className="text-orange-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <TfiPalette className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Color",
     color: "#ff8c19",
     iconColor: "text-orange-900",
@@ -106,8 +106,8 @@ const tilesData = [
   },
   {
     id: 8,
-    icon: <FaImage size={64} className="text-pink-400" />,
-    hoverIcon: <IoImageSharp size={64} />,
+    icon: <FaImage className="text-pink-400 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <IoImageSharp className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "Imagery",
     color: "#972C6C",
     iconColor: "text-pink-400",
@@ -115,8 +115,8 @@ const tilesData = [
   },
   {
     id: 9,
-    icon: <FaDropbox size={64} className="text-white-600" />,
-    hoverIcon: <TfiDropbox size={64} />,
+    icon: <FaDropbox className="text-white-600 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    hoverIcon: <TfiDropbox className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
     title: "",
     color: "#0000ff",
     iconColor: "text-white-400",
@@ -147,12 +147,12 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
       viewport={{ once: true }}
       whileHover={{
         scale: 1.05,
-        backgroundColor: "rgba(0,0,0,0.1)",
+        backgroundColor: "#000000",
         transition: { type: "spring", stiffness: 300 }
       }}
     >
       <motion.h2
-        className={`text-xl font-bold absolute top-4 left-4 ${
+        className={`text-base md:text-lg lg:text-xl font-bold absolute top-2 md:top-3 lg:top-4 left-2 md:left-3 lg:left-4 ${
           hoveredId ? "text-white" : item.iconColor
         }`}
         initial={{ opacity: 0, y: 20 }}
@@ -179,11 +179,28 @@ export default function Data() {
   const View = useInView(mainref, { once: true });
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
+  // Effect to handle animation
   useEffect(() => {
     if (View) {
       animation.start("visible");
     }
   }, [View, animation]);
+
+  // Effect to handle window resize and ensure grid fits viewport
+  useEffect(() => {
+    const handleResize = () => {
+      // Force a re-render when window is resized
+      setHoveredId(null);
+    };
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const containerVariants = {
     hidden: {},
@@ -191,12 +208,12 @@ export default function Data() {
   };
 
   return (
-    <section ref={mainref} className="min-h-screen px-2 py-2 md:px-2 bg-white">
+    <section ref={mainref} className="h-full px-2 py-2 sm:px-3 sm:py-3 md:px-4 md:py-4 lg:px-6 lg:py-6 bg-white overflow-hidden">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate={animation}
-        className="grid gap-2 grid-areas"
+        className="grid gap-1 sm:gap-2 md:gap-3 grid-areas h-full"
       >
         {tilesData.map((item) => (
           <Tile
