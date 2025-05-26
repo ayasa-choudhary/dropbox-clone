@@ -24,3 +24,45 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+.grid-areas{
+  display: grid;
+  /* transform: scale(0.2); */
+  /* transition: transform 0.2s ease-out; */
+  will-change: transform;
+  gap: 4px;
+  grid-template-areas: 
+  "framework framework voice voice voice voice"
+    "framework framework voice voice voice voice"
+    "iconography iconography logo logo typography typography"
+    "iconography iconography dropbox color color color"
+    "imagery imagery imagery motion motion motion"
+    "imagery imagery imagery motion motion motion";
+    
+    
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6,120px);
+}
+
+.framework { grid-area: framework; }
+.voice { grid-area: voice; }
+.logo { grid-area: logo; }
+.typography { grid-area: typography; }
+.iconography { grid-area: iconography; }
+.dropbox { grid-area: dropbox; }
+.color { grid-area: color; }
+.imagery { grid-area: imagery; }
+.motion { grid-area: motion; }
+
+@media (max-width: 668px) {
+  .grid-areas {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "framework voice "
+      "framework voice "
+      "logo typography"
+      "logo typography"
+      "iconography dropbox color"
+      "imagery motion"
+      "imagery motion"
+      
+  }}
