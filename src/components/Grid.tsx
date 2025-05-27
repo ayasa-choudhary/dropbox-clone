@@ -40,87 +40,128 @@ interface TileData {
     setHoveredId: React.Dispatch<React.SetStateAction<number | null>>;
   }
 
+// Custom SVG Components
+const FrameworkGraphic = () => (
+  <svg className="w-32 h-24 text-white" viewBox="0 0 120 90">
+    <circle cx="20" cy="45" r="5" fill="currentColor" />
+    <circle cx="60" cy="45" r="5" fill="currentColor" />
+    <circle cx="100" cy="45" r="5" fill="currentColor" />
+    <line x1="20" y1="45" x2="60" y2="45" stroke="currentColor" strokeWidth="2" />
+    <line x1="60" y1="45" x2="100" y2="45" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+const QuotationMarks = () => (
+  <div className="flex flex-col justify-between h-full w-full p-4">
+    <span className="text-7xl text-black font-bold opacity-75 self-start">"</span>
+    <span className="text-7xl text-black font-bold opacity-75 self-end">"</span>
+  </div>
+);
+
+const TypographyAa = () => (
+  <div className="flex justify-center items-center h-full">
+    <span className="text-9xl font-bold text-white">Aa</span>
+  </div>
+);
+
+const ColorShapes = () => (
+  <div className="relative w-32 h-32">
+    <div className="absolute w-24 h-24 bg-yellow-800 rounded-md"></div>
+    <div className="absolute top-8 left-8 w-16 h-16 bg-neutral-700 rounded-full"></div>
+    <div className="absolute top-12 left-12 w-8 h-8 border-2 border-neutral-400 rounded-full"></div>
+  </div>
+);
+
+const ImageryGraphic = () => (
+  <div className="border border-white p-2">
+    <svg className="w-32 h-24 text-white" viewBox="0 0 120 90">
+      <path d="M10,70 L30,50 L50,60 L80,30 L110,70" stroke="currentColor" fill="none" strokeWidth="2" />
+    </svg>
+  </div>
+);
+
+const MotionBezier = () => (
+  <svg className="w-32 h-24" viewBox="0 0 120 90">
+    <path d="M10,70 C40,0 80,90 110,20" stroke="#5B21B6" fill="none" strokeWidth="2" />
+    <circle cx="10" cy="70" r="4" fill="#5B21B6" />
+    <circle cx="40" cy="0" r="4" fill="#5B21B6" />
+    <circle cx="80" cy="90" r="4" fill="#5B21B6" />
+    <circle cx="110" cy="20" r="4" fill="#5B21B6" />
+  </svg>
+);
+
 const tilesData = [
   {
     id: 1,
-    icon: <LuShare2 className="text-blue-500 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <TfiVector className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <FrameworkGraphic />,
+    hoverIcon: <FrameworkGraphic />,
     title: "Framework",
-    color: "#2c3a58",
-    iconColor: "text-blue-500",
+    color: "#1e3a8a", // bg-blue-900
+    iconColor: "text-white",
     area: "framework"
   },
   {
     id: 2,
-    icon: <LuMicOff className="text-yellow-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <LuMic className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <QuotationMarks />,
+    hoverIcon: <QuotationMarks />,
     title: "Voice & Tone",
-    color: "#F5C531",
-    iconColor: "text-yellow-900",
+    color: "#eab308", // bg-yellow-500
+    iconColor: "text-black",
     area: "voice"
   },
   {
     id: 3,
-    icon: <FaDropbox className="text-cyan-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <TfiDropbox className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <FaDropbox className="text-cyan-900 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" />,
+    hoverIcon: <FaDropbox className="text-cyan-900 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" />,
     title: "Logo",
-    color: "#00C2E5",
-    iconColor: "text-cyan-900",
+    color: "#22d3ee", // bg-cyan-400
+    iconColor: "text-black",
     area: "logo"
   },
   {
     id: 4,
-    icon: <LuCaseSensitive className="text-red-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <VscCaseSensitive className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <TypographyAa />,
+    hoverIcon: <TypographyAa />,
     title: "Typography",
-    color: "#fa551e",
-    iconColor: "text-red-900",
+    color: "#ef4444", // bg-red-500
+    iconColor: "text-white",
     area: "typography"
   },
   {
     id: 5,
-    icon: <LuTrendingDown className="text-purple-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <LuTrendingUp className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <MotionBezier />,
+    hoverIcon: <MotionBezier />,
     title: "Motion",
-    color: "#C9A2E1",
-    iconColor: "text-purple-900",
+    color: "#c084fc", // bg-purple-400
+    iconColor: "text-black",
     area: "motion"
   },
   {
     id: 6,
-    icon: <FaLock className="text-green-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <FaUnlockAlt className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <FaLock className="text-green-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 self-start" />,
+    hoverIcon: <FaUnlockAlt className="text-green-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 self-start" />,
     title: "Iconography",
-    color: "#9BD438",
-    iconColor: "text-green-900",
+    color: "#a3e635", // bg-lime-400
+    iconColor: "text-black",
     area: "iconography"
   },
   {
     id: 7,
-    icon: <FaPalette className="text-orange-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <TfiPalette className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <ColorShapes />,
+    hoverIcon: <ColorShapes />,
     title: "Color",
-    color: "#ff8c19",
-    iconColor: "text-orange-900",
+    color: "#f97316", // bg-orange-500
+    iconColor: "text-black",
     area: "color"
   },
   {
     id: 8,
-    icon: <FaImage className="text-pink-400 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <IoImageSharp className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
+    icon: <ImageryGraphic />,
+    hoverIcon: <ImageryGraphic />,
     title: "Imagery",
-    color: "#972C6C",
-    iconColor: "text-pink-400",
+    color: "#000000", // bg-black
+    iconColor: "text-white",
     area: "imagery"
-  },
-  {
-    id: 9,
-    icon: <FaDropbox className="text-white-600 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    hoverIcon: <TfiDropbox className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />,
-    title: "",
-    color: "#0000ff",
-    iconColor: "text-white-400",
-    area: "dropbox"
   }
 ];
 
@@ -133,13 +174,33 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
     }
   };
 
+  // Add row-span-2 class for Framework and Logo tiles
+  const getRowSpanClass = () => {
+    if (item.area === "framework" || item.area === "logo") {
+      return "md:row-span-2";
+    }
+    return "";
+  };
+
+  // Custom content positioning based on tile type
+  const getContentPositioning = () => {
+    switch (item.area) {
+      case "iconography":
+        return "flex flex-col justify-between h-full p-4";
+      case "imagery":
+        return "flex justify-center items-center h-full";
+      default:
+        return "flex items-center justify-center";
+    }
+  };
+
   return (
     <motion.div
       key={item.id}
       onMouseEnter={() => setHoveredId(item.id)}
       onMouseLeave={() => setHoveredId(null)}
       onClick={handleClick}
-      className={`relative flex items-center justify-center rounded-lg cursor-pointer overflow-hidden ${item.area} h-full`}
+      className={`relative flex items-center justify-center rounded-lg cursor-pointer overflow-hidden ${item.area} ${getRowSpanClass()} h-full`}
       style={{ backgroundColor: item.color }}
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -162,12 +223,45 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
       >
         {item.title}
       </motion.h2>
-      <motion.div
-        className="absolute bg-center z-10"
-        whileHover={{ rotate: 15, scale: 1.2 }}
-      >
-        {hoveredId === item.id ? item.hoverIcon : item.icon}
-      </motion.div>
+
+      <div className={getContentPositioning()}>
+        {item.area === "framework" && <FrameworkGraphic />}
+        {item.area === "voice" && <QuotationMarks />}
+        {item.area === "logo" && (
+          <FaDropbox className="text-cyan-900 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24" />
+        )}
+        {item.area === "typography" && <TypographyAa />}
+        {item.area === "iconography" && (
+          <FaLock className="text-green-900 w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16 self-start" />
+        )}
+        {item.area === "color" && <ColorShapes />}
+        {item.area === "imagery" && <ImageryGraphic />}
+        {item.area === "motion" && <MotionBezier />}
+
+        {/* Fallback to original icons if area doesn't match any custom component */}
+        {!["framework", "voice", "logo", "typography", "iconography", "color", "imagery", "motion"].includes(item.area) && (
+          <motion.div
+            className="absolute bg-center z-10"
+            whileHover={{ rotate: 15, scale: 1.2 }}
+          >
+            {hoveredId === item.id ? item.hoverIcon : item.icon}
+          </motion.div>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
+// Dropbox Component
+const DropboxTile = () => {
+  return (
+    <motion.div
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 p-2 rounded shadow-lg"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      whileHover={{ scale: 1.1 }}
+    >
+      <FaDropbox className="text-white w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" />
     </motion.div>
   );
 };
@@ -213,7 +307,7 @@ export default function Data() {
         variants={containerVariants}
         initial="hidden"
         animate={animation}
-        className="grid gap-1 sm:gap-2 md:gap-3 grid-areas h-full"
+        className="grid gap-1 sm:gap-2 md:gap-3 grid-areas h-full relative"
       >
         {tilesData.map((item) => (
           <Tile
@@ -223,6 +317,7 @@ export default function Data() {
             setHoveredId={setHoveredId}
           />
         ))}
+        <DropboxTile />
       </motion.div>
     </section>
   );
