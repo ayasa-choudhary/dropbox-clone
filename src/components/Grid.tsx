@@ -476,7 +476,7 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
     >
       <motion.h2
         className={`text-2xl md:text-3xl lg:text-4xl font-bold absolute top-2 md:top-3 lg:top-4 left-2 md:left-3 lg:left-4 ${
-          hoveredId ? "text-white" : item.iconColor
+          hoveredId === item.id ? "text-white" : item.iconColor
         }`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

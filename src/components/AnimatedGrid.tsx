@@ -6,8 +6,8 @@ import Data from "./Grid";
 
 // Intro Section Component
 const IntroSection = ({ scrollYProgress }: { scrollYProgress: import('framer-motion').MotionValue<number> }) => {
-  const opacity = useTransform(scrollYProgress, [0, 0.1, 0.2], [1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.1, 0.2], [1, 1, 0.95]);
+  const opacity = useTransform(scrollYProgress, [0, 0.05, 0.15], [1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.05, 0.15], [1, 1, 0.95]);
 
   return (
     <motion.div
@@ -29,83 +29,83 @@ const TransformingTile = ({ scrollYProgress }: { scrollYProgress: import('framer
   // Scale animation: tiny -> large with text -> peak size -> slightly larger than final -> final size
   const scale = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.7, 0.9],
+    [0.05, 0.2, 0.4, 0.7, 0.9],
     [0.2, 1.5, 2.5, 1.2, 1]
   );
 
   // Text opacity: invisible -> visible -> invisible
   const textOpacity = useTransform(
     scrollYProgress,
-    [0.2, 0.3, 0.4, 0.5],
+    [0.1, 0.2, 0.3, 0.4],
     [0, 1, 1, 0]
   );
 
   // Width animation: starts small, gets large during text phase, then becomes small again
   const width = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.7, 0.9],
+    [0.05, 0.2, 0.4, 0.7, 0.9],
     ["40px", "300px", "400px", "100px", "64px"]
   );
 
   // Height animation: follows similar pattern to width
   const height = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.7, 0.9],
+    [0.05, 0.2, 0.4, 0.7, 0.9],
     ["40px", "200px", "300px", "100px", "64px"]
   );
 
   // Padding animation: more padding during text phase, less at beginning and end
   const padding = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.9],
+    [0.05, 0.2, 0.4, 0.9],
     ["4px", "16px", "16px", "8px"]
   );
 
   // Z-index: stays on top during main animation, then goes behind grid at the end
   const zIndex = useTransform(
     scrollYProgress,
-    [0.15, 0.4, 0.6],
+    [0.05, 0.3, 0.5],
     [20, 20, 1]
   );
 
   // Logo size: small at start, smaller during text phase, larger at peak, then final size
   const logoSize = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.7, 0.9],
+    [0.05, 0.2, 0.4, 0.7, 0.9],
     ["24px", "32px", "48px", "32px", "24px"]
   );
 
   // Position animation: centered during intro, moves to final position
   const x = useTransform(
     scrollYProgress,
-    [0.15, 0.9],
+    [0.05, 0.9],
     ["-50%", "-50%"]
   );
 
   const y = useTransform(
     scrollYProgress,
-    [0.15, 0.9],
+    [0.05, 0.9],
     ["-50%", "-50%"]
   );
 
   // Background color animation: blue -> darker blue -> blue
   const backgroundColor = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.7, 0.9],
+    [0.05, 0.2, 0.4, 0.7, 0.9],
     ["#2563eb", "#1d4ed8", "#1e40af", "#2563eb", "#2563eb"]
   );
 
   // Border radius animation: more rounded during text phase
   const borderRadius = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.7, 0.9],
+    [0.05, 0.2, 0.4, 0.7, 0.9],
     ["4px", "8px", "12px", "8px", "4px"]
   );
 
   // Shadow animation: larger shadow during peak size
   const boxShadow = useTransform(
     scrollYProgress,
-    [0.15, 0.3, 0.5, 0.7, 0.9],
+    [0.05, 0.2, 0.4, 0.7, 0.9],
     [
       "0 4px 6px rgba(0, 0, 0, 0.1)",
       "0 10px 15px rgba(0, 0, 0, 0.1)",
@@ -148,9 +148,9 @@ const TransformingTile = ({ scrollYProgress }: { scrollYProgress: import('framer
         style={{
           width: logoSize,
           height: logoSize,
-          bottom: useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.9], ["auto", "16px", "16px", "auto"]),
-          right: useTransform(scrollYProgress, [0.15, 0.3, 0.5, 0.9], ["auto", "16px", "16px", "auto"]),
-          opacity: useTransform(scrollYProgress, [0.15, 0.25, 0.4, 0.6, 0.9], [1, 0.7, 0.7, 0.9, 1])
+          bottom: useTransform(scrollYProgress, [0.05, 0.2, 0.4, 0.9], ["auto", "16px", "16px", "auto"]),
+          right: useTransform(scrollYProgress, [0.05, 0.2, 0.4, 0.9], ["auto", "16px", "16px", "auto"]),
+          opacity: useTransform(scrollYProgress, [0.05, 0.15, 0.3, 0.5, 0.9], [1, 0.7, 0.7, 0.9, 1])
         }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
       >
@@ -169,20 +169,20 @@ export default function AnimatedGrid() {
   });
 
   // Animation for the 8 surrounding tiles
-  const tilesOpacity = useTransform(scrollYProgress, [0.6, 0.9], [0, 1]);
-  const tilesScale = useTransform(scrollYProgress, [0.6, 0.9], [0.9, 1]);
+  const tilesOpacity = useTransform(scrollYProgress, [0.5, 0.9], [0, 1]);
+  const tilesScale = useTransform(scrollYProgress, [0.5, 0.9], [0.9, 1]);
 
   // Background color animation for the container
   const bgColor = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.6, 0.9],
+    [0, 0.2, 0.5, 0.9],
     ["#ffffff", "#ffffff", "#f8fafc", "#ffffff"]
   );
 
   return (
     <div
       ref={scrollContainerRef}
-      className="h-[150vh] w-full relative"
+      className="h-[250vh] w-full relative"
     >
       <motion.div
         className="sticky top-0 h-screen w-full overflow-hidden bg-white"
