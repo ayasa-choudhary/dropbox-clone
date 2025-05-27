@@ -41,44 +41,129 @@ interface TileData {
   }
 
 // Custom SVG Components
-const FrameworkGraphic = () => (
-  <svg className="w-36 h-28 md:w-40 md:h-32 lg:w-48 lg:h-36 text-white" viewBox="0 0 120 90">
-    <circle cx="20" cy="45" r="5" fill="currentColor" />
-    <circle cx="60" cy="45" r="5" fill="currentColor" />
-    <circle cx="100" cy="45" r="5" fill="currentColor" />
-    <line x1="20" y1="45" x2="60" y2="45" stroke="currentColor" strokeWidth="2" />
-    <line x1="60" y1="45" x2="100" y2="45" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
+const FrameworkGraphic = ({ isHovered }) => {
+  const circleVariants = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: [1, 1.3, 1],
+      transition: { 
+        duration: 0.8, 
+        repeat: Infinity,
+        repeatType: "loop"
+      }
+    }
+  };
 
-const QuotationMarks = () => (
-  <div className="flex flex-col justify-between h-full w-full p-4">
-    <motion.span 
-      className="text-7xl md:text-8xl lg:text-9xl text-black font-bold opacity-75 self-start"
-      whileHover={{ scale: 1.2, x: 10, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
-      "
-    </motion.span>
-    <motion.span 
-      className="text-7xl md:text-8xl lg:text-9xl text-black font-bold opacity-75 self-end"
-      whileHover={{ scale: 1.2, x: -10, opacity: 1 }}
-      transition={{ type: "spring", stiffness: 300 }}
-    >
-      "
-    </motion.span>
-  </div>
-);
+  const lineVariants = {
+    initial: { pathLength: 1, opacity: 0.8 },
+    hover: { 
+      pathLength: [0, 1],
+      opacity: 1,
+      transition: { 
+        duration: 1.2,
+        repeat: Infinity,
+        repeatType: "loop"
+      }
+    }
+  };
 
-const TypographyAa = () => {
+  return (
+    <svg className="w-36 h-28 md:w-40 md:h-32 lg:w-48 lg:h-36 text-white" viewBox="0 0 120 90">
+      <motion.circle 
+        cx="20" cy="45" r="5" 
+        fill="currentColor"
+        variants={circleVariants}
+        animate={isHovered ? "hover" : "initial"}
+      />
+      <motion.circle 
+        cx="60" cy="45" r="5" 
+        fill="currentColor"
+        variants={circleVariants}
+        animate={isHovered ? "hover" : "initial"}
+      />
+      <motion.circle 
+        cx="100" cy="45" r="5" 
+        fill="currentColor"
+        variants={circleVariants}
+        animate={isHovered ? "hover" : "initial"}
+      />
+      <motion.line 
+        x1="20" y1="45" x2="60" y2="45" 
+        stroke="currentColor" 
+        strokeWidth="2"
+        variants={lineVariants}
+        animate={isHovered ? "hover" : "initial"}
+      />
+      <motion.line 
+        x1="60" y1="45" x2="100" y2="45" 
+        stroke="currentColor" 
+        strokeWidth="2"
+        variants={lineVariants}
+        animate={isHovered ? "hover" : "initial"}
+      />
+    </svg>
+  );
+};
+
+const QuotationMarks = ({ isHovered }) => {
+  const openQuoteVariants = {
+    initial: { scale: 1, x: 0, opacity: 0.75 },
+    hover: { 
+      scale: 1.2, 
+      x: 10, 
+      opacity: 1,
+      transition: { type: "spring", stiffness: 300 }
+    }
+  };
+
+  const closeQuoteVariants = {
+    initial: { scale: 1, x: 0, opacity: 0.75 },
+    hover: { 
+      scale: 1.2, 
+      x: -10, 
+      opacity: 1,
+      transition: { type: "spring", stiffness: 300 }
+    }
+  };
+
+  return (
+    <div className="flex flex-col justify-between h-full w-full p-4">
+      <motion.span 
+        className="text-7xl md:text-8xl lg:text-9xl text-black font-bold self-start"
+        variants={openQuoteVariants}
+        animate={isHovered ? "hover" : "initial"}
+      >
+        "
+      </motion.span>
+      <motion.span 
+        className="text-7xl md:text-8xl lg:text-9xl text-black font-bold self-end"
+        variants={closeQuoteVariants}
+        animate={isHovered ? "hover" : "initial"}
+      >
+        "
+      </motion.span>
+    </div>
+  );
+};
+
+const TypographyAa = ({ isHovered }) => {
   const textVariants = {
-    initial: { letterSpacing: "0px" },
+    initial: { letterSpacing: "0px", scale: 1 },
     hover: { 
       letterSpacing: "10px",
+      scale: [1, 1.05, 1],
       transition: { 
-        duration: 0.5,
-        yoyo: Infinity,
-        ease: "easeInOut"
+        letterSpacing: {
+          duration: 1.2,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        },
+        scale: {
+          duration: 1.5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }
       }
     }
   };
@@ -88,8 +173,7 @@ const TypographyAa = () => {
       <motion.span 
         className="text-9xl md:text-[10rem] lg:text-[12rem] font-bold text-white"
         variants={textVariants}
-        initial="initial"
-        whileHover="hover"
+        animate={isHovered ? "hover" : "initial"}
       >
         Aa
       </motion.span>
@@ -97,33 +181,59 @@ const TypographyAa = () => {
   );
 };
 
-const ColorShapes = () => {
+const ColorShapes = ({ isHovered }) => {
+  const squareVariants = {
+    initial: { rotate: 0, scale: 1 },
+    hover: { 
+      rotate: 45, 
+      scale: 1.1,
+      transition: { type: "spring", stiffness: 300 }
+    }
+  };
+
+  const circleVariants = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: 1.2,
+      transition: { type: "spring", stiffness: 300 }
+    }
+  };
+
+  const smallCircleVariants = {
+    initial: { scale: 1, borderColor: "rgba(163, 163, 163, 0.5)" },
+    hover: { 
+      scale: 1.3,
+      borderColor: "rgba(255, 255, 255, 0.8)",
+      transition: { type: "spring", stiffness: 300 }
+    }
+  };
+
   return (
     <div className="relative w-36 h-36 md:w-40 md:h-40 lg:w-48 lg:h-48">
       <motion.div 
         className="absolute w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 bg-yellow-800 rounded-md"
-        whileHover={{ rotate: 45, scale: 1.1 }}
-        transition={{ type: "spring", stiffness: 300 }}
+        variants={squareVariants}
+        animate={isHovered ? "hover" : "initial"}
       />
       <motion.div 
         className="absolute top-10 left-10 md:top-12 md:left-12 lg:top-14 lg:left-14 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 bg-neutral-700 rounded-full"
-        whileHover={{ scale: 1.2 }}
-        transition={{ type: "spring", stiffness: 300 }}
+        variants={circleVariants}
+        animate={isHovered ? "hover" : "initial"}
       />
       <motion.div 
         className="absolute top-14 left-14 md:top-16 md:left-16 lg:top-20 lg:left-20 w-10 h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 border-2 border-neutral-400 rounded-full"
-        whileHover={{ scale: 1.3 }}
-        transition={{ type: "spring", stiffness: 300 }}
+        variants={smallCircleVariants}
+        animate={isHovered ? "hover" : "initial"}
       />
     </div>
   );
 };
 
-const ImageryGraphic = () => {
+const ImageryGraphic = ({ isHovered }) => {
   const pathVariants = {
-    initial: { pathLength: 1 },
+    initial: { pathLength: 0 },
     hover: { 
-      pathLength: [0, 1],
+      pathLength: 1,
       transition: { 
         duration: 1.5,
         ease: "easeInOut"
@@ -131,8 +241,21 @@ const ImageryGraphic = () => {
     }
   };
 
+  const containerVariants = {
+    initial: { borderColor: "rgba(255, 255, 255, 0.7)" },
+    hover: { 
+      borderColor: "rgba(255, 255, 255, 1)",
+      boxShadow: "0 0 10px rgba(255, 255, 255, 0.5)",
+      transition: { duration: 0.5 }
+    }
+  };
+
   return (
-    <div className="border border-white p-3 md:p-4 lg:p-5">
+    <motion.div 
+      className="border border-white p-3 md:p-4 lg:p-5"
+      variants={containerVariants}
+      animate={isHovered ? "hover" : "initial"}
+    >
       <svg className="w-36 h-28 md:w-40 md:h-32 lg:w-48 lg:h-36 text-white" viewBox="0 0 120 90">
         <motion.path 
           d="M10,70 L30,50 L50,60 L80,30 L110,70" 
@@ -140,35 +263,53 @@ const ImageryGraphic = () => {
           fill="none" 
           strokeWidth="2"
           variants={pathVariants}
-          initial="initial"
-          whileHover="hover"
+          animate={isHovered ? "hover" : "initial"}
         />
       </svg>
-    </div>
+    </motion.div>
   );
 };
 
-const MotionBezier = () => {
+const MotionBezier = ({ isHovered }) => {
   const pathVariants = {
     initial: { 
-      d: "M10,70 C40,0 80,90 110,20" 
+      d: "M10,70 C40,0 80,90 110,20",
+      pathLength: 0.5,
+      pathOffset: 0
     },
     hover: { 
       d: "M10,70 C40,90 80,0 110,20",
+      pathLength: 1,
+      pathOffset: [0, 1],
       transition: { 
-        duration: 1,
-        yoyo: Infinity,
-        ease: "easeInOut"
+        d: {
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut"
+        },
+        pathOffset: {
+          duration: 2,
+          repeat: Infinity,
+          ease: "linear"
+        },
+        pathLength: {
+          duration: 0.5
+        }
       }
     }
   };
 
   const circleVariants = {
-    initial: { scale: 1 },
+    initial: { 
+      scale: 1,
+      fill: "#5B21B6"
+    },
     hover: { 
       scale: [1, 1.5, 1],
+      fill: ["#5B21B6", "#9333EA", "#5B21B6"],
       transition: { 
-        duration: 0.5,
+        duration: 1,
         repeat: Infinity,
         repeatType: "reverse"
       }
@@ -179,39 +320,30 @@ const MotionBezier = () => {
     <svg className="w-36 h-28 md:w-40 md:h-32 lg:w-48 lg:h-36" viewBox="0 0 120 90">
       <motion.path 
         variants={pathVariants}
-        initial="initial"
-        whileHover="hover"
+        animate={isHovered ? "hover" : "initial"}
         stroke="#5B21B6" 
         fill="none" 
         strokeWidth="2" 
       />
       <motion.circle 
         cx="10" cy="70" r="4" 
-        fill="#5B21B6" 
         variants={circleVariants}
-        initial="initial"
-        whileHover="hover"
+        animate={isHovered ? "hover" : "initial"}
       />
       <motion.circle 
         cx="40" cy="0" r="4" 
-        fill="#5B21B6" 
         variants={circleVariants}
-        initial="initial"
-        whileHover="hover"
+        animate={isHovered ? "hover" : "initial"}
       />
       <motion.circle 
         cx="80" cy="90" r="4" 
-        fill="#5B21B6" 
         variants={circleVariants}
-        initial="initial"
-        whileHover="hover"
+        animate={isHovered ? "hover" : "initial"}
       />
       <motion.circle 
         cx="110" cy="20" r="4" 
-        fill="#5B21B6" 
         variants={circleVariants}
-        initial="initial"
-        whileHover="hover"
+        animate={isHovered ? "hover" : "initial"}
       />
     </svg>
   );
@@ -349,7 +481,6 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
       transition={{ duration: 0.6, ease: "easeOut", delay: item.id * 0.1 }}
       viewport={{ once: true }}
       whileHover={{
-        scale: 1.05,
         backgroundColor: "#000000",
         transition: { type: "spring", stiffness: 300 }
       }}
@@ -360,15 +491,15 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
         }`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ opacity: 1 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
         {item.title}
       </motion.h2>
 
       <div className={getContentPositioning()}>
-        {item.area === "framework" && <FrameworkGraphic />}
-        {item.area === "voice" && <QuotationMarks />}
+        {item.area === "framework" && <FrameworkGraphic isHovered={hoveredId === item.id} />}
+        {item.area === "voice" && <QuotationMarks isHovered={hoveredId === item.id} />}
         {item.area === "logo" && (
           hoveredId === item.id ? 
           <motion.div
@@ -381,7 +512,7 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
           </motion.div> :
           <FaDropbox className="text-cyan-900 w-20 h-20 md:w-24 md:h-24 lg:w-32 lg:h-32" />
         )}
-        {item.area === "typography" && <TypographyAa />}
+        {item.area === "typography" && <TypographyAa isHovered={hoveredId === item.id} />}
         {item.area === "iconography" && (
           hoveredId === item.id ?
           <motion.div
@@ -395,9 +526,9 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
           </motion.div> :
           <FaLock className="text-green-900 w-14 h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 self-start" />
         )}
-        {item.area === "color" && <ColorShapes />}
-        {item.area === "imagery" && <ImageryGraphic />}
-        {item.area === "motion" && <MotionBezier />}
+        {item.area === "color" && <ColorShapes isHovered={hoveredId === item.id} />}
+        {item.area === "imagery" && <ImageryGraphic isHovered={hoveredId === item.id} />}
+        {item.area === "motion" && <MotionBezier isHovered={hoveredId === item.id} />}
 
         {/* Fallback to original icons if area doesn't match any custom component */}
         {!["framework", "voice", "logo", "typography", "iconography", "color", "imagery", "motion"].includes(item.area) && (
@@ -417,11 +548,10 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
 const DropboxTile = () => {
   return (
     <motion.div
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-blue-600 p-3 rounded shadow-lg"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-1 rounded-lg shadow-lg"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       whileHover={{ 
-        scale: 1.2, 
         rotate: [0, 10, -10, 0],
         boxShadow: "0 10px 25px rgba(0, 0, 0, 0.2)"
       }}
@@ -436,7 +566,9 @@ const DropboxTile = () => {
         }
       }}
     >
-      <FaDropbox className="text-white w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
+      <div className="bg-blue-600 p-3 rounded-md">
+        <FaDropbox className="text-white w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20" />
+      </div>
     </motion.div>
   );
 };
