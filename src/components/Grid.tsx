@@ -214,9 +214,15 @@ const ColorShapes = ({ isHovered = false }: { isHovered?: boolean }) => {
 
 const ImageryGraphic = ({ isHovered = false }: { isHovered?: boolean }) => {
   const pathVariants = {
-    initial: { pathLength: 0 },
+    initial: { 
+      pathLength: 0.5, 
+      opacity: 0.7,
+      strokeDasharray: "5,3"
+    },
     hover: { 
       pathLength: 1,
+      opacity: 1,
+      strokeDasharray: "0,0",
       transition: { 
         duration: 1.5,
         ease: "easeInOut"
@@ -339,7 +345,7 @@ const tilesData = [
     hoverIcon: <FrameworkGraphic />,
     title: "Framework",
     color: "#1e3a8a", // bg-blue-900
-    iconColor: "text-white",
+    iconColor: "text-blue-300",
     area: "framework"
   },
   {
@@ -348,7 +354,7 @@ const tilesData = [
     hoverIcon: <QuotationMarks />,
     title: "Voice & Tone",
     color: "#eab308", // bg-yellow-500
-    iconColor: "text-black",
+    iconColor: "text-yellow-900",
     area: "voice"
   },
   {
@@ -364,7 +370,7 @@ const tilesData = [
     </motion.div>,
     title: "Logo",
     color: "#22d3ee", // bg-cyan-400
-    iconColor: "text-black",
+    iconColor: "text-cyan-800",
     area: "logo"
   },
   {
@@ -373,7 +379,7 @@ const tilesData = [
     hoverIcon: <TypographyAa />,
     title: "Typography",
     color: "#ef4444", // bg-red-500
-    iconColor: "text-white",
+    iconColor: "text-red-200",
     area: "typography"
   },
   {
@@ -382,7 +388,7 @@ const tilesData = [
     hoverIcon: <MotionBezier />,
     title: "Motion",
     color: "#c084fc", // bg-purple-400
-    iconColor: "text-black",
+    iconColor: "text-purple-800",
     area: "motion"
   },
   {
@@ -399,7 +405,7 @@ const tilesData = [
     </motion.div>,
     title: "Iconography",
     color: "#a3e635", // bg-lime-400
-    iconColor: "text-black",
+    iconColor: "text-lime-800",
     area: "iconography"
   },
   {
@@ -408,7 +414,7 @@ const tilesData = [
     hoverIcon: <ColorShapes />,
     title: "Color",
     color: "#f97316", // bg-orange-500
-    iconColor: "text-black",
+    iconColor: "text-orange-900",
     area: "color"
   },
   {
@@ -417,7 +423,7 @@ const tilesData = [
     hoverIcon: <ImageryGraphic />,
     title: "Imagery",
     color: "#892055", // burgundy
-    iconColor: "text-white",
+    iconColor: "text-pink-200",
     area: "imagery"
   }
 ];
@@ -469,7 +475,7 @@ const Tile: React.FC<TileProps> = ({ item, hoveredId, setHoveredId }) => {
       }}
     >
       <motion.h2
-        className={`text-base md:text-lg lg:text-xl font-bold absolute top-2 md:top-3 lg:top-4 left-2 md:left-3 lg:left-4 ${
+        className={`text-2xl md:text-3xl lg:text-4xl font-bold absolute top-2 md:top-3 lg:top-4 left-2 md:left-3 lg:left-4 ${
           hoveredId ? "text-white" : item.iconColor
         }`}
         initial={{ opacity: 0, y: 20 }}
