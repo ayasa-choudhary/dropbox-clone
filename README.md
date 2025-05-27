@@ -2,7 +2,7 @@
 
 A modern, interactive clone of the Dropbox Brand Guidelines page featuring scroll-driven animations and interactive elements. This project showcases a responsive grid layout with animated tiles representing different aspects of the Dropbox brand identity.
 
-![Dropbox Brand Guidelines Clone](https://brand.dropbox.com/static/images/logo-dropbox-glyph-blue.svg)
+![Dropbox Brand Guidelines Clone](https://brand.dropbox.com)
 
 ## Features
 
