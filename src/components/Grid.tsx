@@ -1,26 +1,9 @@
 "use client";
 import {
-  TfiVector,
-  TfiDropbox,
-  TfiPalette
-} from "react-icons/tfi";
-import {
-  LuShare2,
-  LuMicOff,
-  LuMic,
-  LuCaseSensitive,
-  LuTrendingDown,
-  LuTrendingUp
-} from "react-icons/lu";
-import {
   FaDropbox,
   FaLock,
-  FaUnlockAlt,
-  FaPalette,
-  FaImage
+  FaUnlockAlt
 } from "react-icons/fa";
-import { VscCaseSensitive } from "react-icons/vsc";
-import { IoImageSharp } from "react-icons/io5";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -41,20 +24,20 @@ interface TileData {
   }
 
 // Custom SVG Components
-const FrameworkGraphic = ({ isHovered }) => {
-  const circleVariants = {
+const FrameworkGraphic = ({ isHovered = false }: { isHovered?: boolean }) => {
+  const circleVariants: import('framer-motion').Variants = {
     initial: { scale: 1 },
     hover: { 
       scale: [1, 1.3, 1],
       transition: { 
         duration: 0.8, 
         repeat: Infinity,
-        repeatType: "loop"
+        repeatType: "loop" as const
       }
     }
   };
 
-  const lineVariants = {
+  const lineVariants: import('framer-motion').Variants = {
     initial: { pathLength: 1, opacity: 0.8 },
     hover: { 
       pathLength: [0, 1],
@@ -62,7 +45,7 @@ const FrameworkGraphic = ({ isHovered }) => {
       transition: { 
         duration: 1.2,
         repeat: Infinity,
-        repeatType: "loop"
+        repeatType: "loop" as const
       }
     }
   };
@@ -105,7 +88,7 @@ const FrameworkGraphic = ({ isHovered }) => {
   );
 };
 
-const QuotationMarks = ({ isHovered }) => {
+const QuotationMarks = ({ isHovered = false }: { isHovered?: boolean }) => {
   const openQuoteVariants = {
     initial: { scale: 1, x: 0, opacity: 0.75 },
     hover: { 
@@ -133,20 +116,20 @@ const QuotationMarks = ({ isHovered }) => {
         variants={openQuoteVariants}
         animate={isHovered ? "hover" : "initial"}
       >
-        "
+        &ldquo;
       </motion.span>
       <motion.span 
         className="text-7xl md:text-8xl lg:text-9xl text-black font-bold self-end"
         variants={closeQuoteVariants}
         animate={isHovered ? "hover" : "initial"}
       >
-        "
+        &rdquo;
       </motion.span>
     </div>
   );
 };
 
-const TypographyAa = ({ isHovered }) => {
+const TypographyAa = ({ isHovered = false }: { isHovered?: boolean }) => {
   const textVariants = {
     initial: { letterSpacing: "0px", scale: 1 },
     hover: { 
@@ -181,7 +164,7 @@ const TypographyAa = ({ isHovered }) => {
   );
 };
 
-const ColorShapes = ({ isHovered }) => {
+const ColorShapes = ({ isHovered = false }: { isHovered?: boolean }) => {
   const squareVariants = {
     initial: { rotate: 0, scale: 1 },
     hover: { 
@@ -229,7 +212,7 @@ const ColorShapes = ({ isHovered }) => {
   );
 };
 
-const ImageryGraphic = ({ isHovered }) => {
+const ImageryGraphic = ({ isHovered = false }: { isHovered?: boolean }) => {
   const pathVariants = {
     initial: { pathLength: 0 },
     hover: { 
@@ -270,7 +253,7 @@ const ImageryGraphic = ({ isHovered }) => {
   );
 };
 
-const MotionBezier = ({ isHovered }) => {
+const MotionBezier = ({ isHovered = false }: { isHovered?: boolean }) => {
   const pathVariants = {
     initial: { 
       d: "M10,70 C40,0 80,90 110,20",
@@ -300,7 +283,7 @@ const MotionBezier = ({ isHovered }) => {
     }
   };
 
-  const circleVariants = {
+  const circleVariants: import('framer-motion').Variants = {
     initial: { 
       scale: 1,
       fill: "#5B21B6"
@@ -311,7 +294,7 @@ const MotionBezier = ({ isHovered }) => {
       transition: { 
         duration: 1,
         repeat: Infinity,
-        repeatType: "reverse"
+        repeatType: "reverse" as const
       }
     }
   };

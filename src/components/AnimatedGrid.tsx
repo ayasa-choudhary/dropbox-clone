@@ -5,7 +5,7 @@ import { FaDropbox } from "react-icons/fa";
 import Data from "./Grid";
 
 // Intro Section Component
-const IntroSection = ({ scrollYProgress }) => {
+const IntroSection = ({ scrollYProgress }: { scrollYProgress: import('framer-motion').MotionValue<number> }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.1, 0.2], [1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.1, 0.2], [1, 1, 0.95]);
 
@@ -25,7 +25,7 @@ const IntroSection = ({ scrollYProgress }) => {
 };
 
 // Transforming Tile Component
-const TransformingTile = ({ scrollYProgress }) => {
+const TransformingTile = ({ scrollYProgress }: { scrollYProgress: import('framer-motion').MotionValue<number> }) => {
   // Scale animation: tiny -> large with text -> peak size -> slightly larger than final -> final size
   const scale = useTransform(
     scrollYProgress,
