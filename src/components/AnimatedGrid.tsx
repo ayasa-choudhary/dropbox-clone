@@ -16,7 +16,7 @@ const IntroSection = ({ scrollYProgress }: { scrollYProgress: import('framer-mot
     >
       <div className="max-w-2xl text-center">
         <FaDropbox className="text-blue-600 w-16 h-16 mx-auto mb-6" />
-        <h1 className="text-4xl font-bold mb-4">
+        <h1 className="text-4xl font-bold mb-4 text-gray-900">
           At Dropbox, our Brand Guidelines help us infuse everything we make with identity.
         </h1>
       </div>
